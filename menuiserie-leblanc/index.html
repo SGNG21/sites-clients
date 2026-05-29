@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menuiserie Leblanc - Artisan menuisier bois sur mesure</title>
+    <meta name="description" content="Menuiserie Leblanc, artisan menuisier expert en création de meubles sur mesure, agencement et rénovation. Savoir-faire traditionnel et qualité artisanale.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c1810;
+            background: #fefefe;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #16a34a;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c1810;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #16a34a;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2c1810;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(22, 163, 74, 0.8), rgba(22, 163, 74, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4a574" width="1200" height="600"/><path fill="%23b8956b" d="M0 400l50-16.7c50-16.7 150-50 250-50s200 33.3 300 33.3 200-33.3 300-33.3 200 33.3 250 50l50 16.7V600H0z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #16a34a;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #16a34a;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c1810;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #16a34a;
+            margin: 1rem auto;
+        }
+        
+        /* About */
+        .about {
+            background: #f8f9fa;
+        }
+        
+        .about-content {
+            display: grid;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #d4a574, #b8956b);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #16a34a;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .service-card h3 {
+            color: #2c1810;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Portfolio */
+        .portfolio {
+            background: #f8f9fa;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .portfolio-item {
+            background: #d4a574;
+            height: 250px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Contact */
+        .contact {
+            background: #2c1810;
+            color: white;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact .section-title::after {
+            background: #16a34a;
+        }
+        
+        .contact-content {
+            display: grid;
+            gap: 3rem;
+        }
+        
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .contact-info h3 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #16a34a;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            color: #2c1810;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .nav-menu {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            section {
+                padding: 6rem 0;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Menuiserie Leblanc",
+        "description": "Artisan menuisier expert en création de meubles sur mesure, agencement et rénovation",
+        "url": "https://menuiserie-leblanc.fr",
+        "telephone": "01 23 45 67 89",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "15 Rue de l'Artisanat",
+            "addressLocality": "Lyon",
+            "postalCode": "69000",
+            "addressCountry": "FR"
+        },
+        "openingHours": "Mo-Fr 08:00-18:00",
+        "priceRange": "€€",
+        "serviceArea": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "45.7640",
+                "longitude": "4.8357"
+            },
+            "geoRadius": "50000"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Menuiserie Leblanc</a>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#realisations">Réalisations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#accueil">Accueil</a>
+                <a href="#apropos">À propos</a>
+                <a href="#services">Services</a>
+                <a href="#realisations">Réalisations</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Menuiserie Leblanc</h1
