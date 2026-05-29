@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Findis SARL - Solutions E-commerce et Distribution en Bourgogne</title>
+    <meta name="description" content="Findis SARL accompagne votre entreprise dans sa transformation digitale. Solutions e-commerce, logistique et distribution sur mesure en Bourgogne depuis 2005.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Findis SARL",
+        "description": "Solutions e-commerce et distribution sur mesure. Accompagnement complet pour votre transformation digitale en Bourgogne.",
+        "telephone": "0612345678",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "15 Avenue de la Résistance",
+            "addressLocality": "Auxerre",
+            "postalCode": "89000",
+            "addressCountry": "FR"
+        },
+        "areaServed": "Bourgogne-Franche-Comté",
+        "priceRange": "€€"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: #3b82f6;
+            --color-primary-dark: #2563eb;
+            --color-primary-light: rgba(59, 130, 246, 0.15);
+            --color-cta: #F97316;
+            --color-cta-dark: #EA6C00;
+            --color-bg: #F8FAFC;
+            --color-surface: #FFFFFF;
+            --color-text: #0F172A;
+            --color-text-muted: #64748B;
+            --color-border: #E2E8F0;
+            --font-heading: 'Sora', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-card: 12px;
+            --radius-btn: 8px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06);
+            --transition: 200ms ease-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 48px);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        a, button {
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        a:focus, button:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 24px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            transition: var(--transition);
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            background-color: var(--color-cta);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-cta-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .section {
+            padding: clamp(48px, 8vw, 96px) 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-card);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo-initials {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary);
+            color: white;
+            border-radius: 8px;
+            margin-right: 12px;
+            font-size: 1rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-tel {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-tel:hover {
+            color: var(--color-primary-dark);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding-top: 120px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            gap: 24px;
+            text-align: center;
+            padding: clamp(48px, 8vw, 96px) 0;
+        }
+
+        .hero h1 {
+            color: white;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.95;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px solid white;
+        }
+
+        .btn-white:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background-color: var(--color-surface);
+            padding: 32px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 6px rgba(0,0,0,.1), 0 12px 32px rgba(0,0,0,.12);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--color-primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        .service-card p {
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .stats {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Why Us */
+        .why-us {
+            background-color: var(--color-surface);
+        }
+
+        .why-grid {
+            display: grid;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            background-color: var(--color-bg);
+            border-radius: var(--radius-card);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-primary-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .why-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .why-content p {
+            color: var(--color-text-muted);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .testimonial-card {
+            background-color: var(--color-surface);
+            padding: 32px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            color: #FFC107;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Zone */
+        .zone {
+            background-color: var(--color-bg);
+        }
+
+        .zone-content {
+            text-align: center;
+        }
+
+        .cities-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .city-tag {
+            background-color: var(--color-surface);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Contact */
+        .contact {
+            background-color: var(--color-surface);
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: 48px;
+            margin-top: 48px;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .form-control {
+            padding: 12px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-btn);
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            background-color: var(--color-bg);
+            padding: 32px;
+            border-radius: var(--radius-card);
+            height: fit-content;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .success-message {
+            background-color: #10B981;
+            color: white;
+            padding: 16px;
+            border-radius: var(--radius-btn);
+            text-align: center;
+            display: none;
+            margin-top: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0F172A;
+            color: white;
+            padding: 48px 0 24px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .footer-tagline {
+            opacity: 0.8;
+            margin-bottom: 32px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-copyright {
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+
+            .contact-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            .hero-badges {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .nav-actions {
+                gap: 32px;
+            }
+
+            .hero-tagline {
+                font-size: 1.375rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">
+                    <div class="logo-initials">FD</div>
+                    Findis SARL
+                </a>
+                <div class="nav-actions">
+                    <a href="tel:0612345678" class="nav-tel">06 12 34 56 78</a>
+                    <a href="#contact" class="btn btn-primary">Devis gratuit</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Votre partenaire e-commerce et distribution en Bourgogne</h1>
+                <p class="hero-tagline">Solutions digitales sur mesure pour développer votre activité commerciale et optimiser votre chaîne de distribution</p>
+                
+                <div class="hero-badges">
+                    <div class="hero-badge">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>5/5 étoiles</span>
+                    </div>
+                    <div class="hero-badge">
+                        <span>•</span>
+                        <span>200+ clients satisfaits</span>
+                    </div>
+                    <div class="hero-badge">
+                        <span>•</span>
+                        <span>Depuis 2005</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    <a href="#services" class="btn btn-white">Nos services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2>Nos expertises e-commerce & distribution</h2>
+                <p style="color: var(--color-text-muted); margin-top: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Des solutions complètes pour digitaliser et optimiser votre activité commerciale
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Création de sites e-commerce</h3>
+                    <p>Boutiques en ligne sur mesure avec PrestaShop, Shopify ou WooCommerce. Interface moderne, paiement sécurisé et gestion complète des stocks.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Logistique & Distribution</h3>
+                    <p>Optimisation de vos circuits de distribution, gestion d'entrepôts et solutions de livraison adaptées à votre secteur d'activité.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Stratégie commerciale</h3>
+                    <p>Accompagnement marketing digital, référencement, campagnes publicitaires et analyse des performances pour booster vos ventes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="19">0</span>
+                    <span class="stat-label">Années d'expérience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="250">0</span>
+                    <span class="stat-label">Clients accompagnés</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">% de satisfaction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="48">0</span>
+                    <span class="stat-label">Heures de réponse</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section why-us" id="about">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2>Pourquoi choisir Findis SARL ?</h2>
+                <p style="color: var(--color-text-muted); margin-top: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Notre expertise locale et notre approche personnalisée font la différence
+                </p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <path d="M21 12c-1.17-3.33-4-6-9-6s-7.83 2.67-9 6c1.17 3.33 4 6 9 6s7.83-2.67 9-6z"></path>
+                        </svg>
+                    </div>
+                    <div class="why-content">
+                        <h3>Expertise locale reconnue</h3>
+                        <p>Connaissance approfondie du marché bourguignon et de ses spécificités commerciales. Accompagnement de proximité et réactivité garantie.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="why-content">
+                        <h3>Solutions sur mesure</h3>
+                        <p>Chaque projet est unique. Nous développons des solutions personnalisées adaptées à votre secteur d'activité et à vos objectifs commerciaux.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                        </svg>
+                    </div>
+                    <div class="why-content">
+                        <h3>Support technique continu</h3>
+                        <p>Maintenance, mises à jour et assistance technique disponibles 7j/7. Votre activité ne s'arrête jamais, notre support non plus.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-icon">
+                        <svg width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="why-content">
+                        <h3>ROI mesurable</h3>
+                        <p>Tableau de bord détaillé et reporting régulier pour mesurer l'impact de nos actions sur votre chiffre d'affaires et votre croissance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2>Ils nous font confiance</h2>
+                <p style="color: var(--color-text-muted); margin-top: 16px;">
+                    Découvrez les témoignages de nos clients satisfaits
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Findis a transformé notre petite épicerie locale en véritable e-commerce. Les ventes en ligne représentent maintenant 40% de notre chiffre d'affaires !"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>Marie Colombo</h4>
+                            <p>Épicerie Bio - Auxerre</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Excellent accompagnement pour optimiser notre logistique.
